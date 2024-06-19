@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+    <style>
+        /* Basic CSS for navigation bar and footer */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+    font-size: 29px;
+    font-weight: bold;
+    
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    10%, 100% {
+        opacity: 100;
+
+    }
+    25%, 75% {
+        opacity: 0;
+        
+    }
+    
+}
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ff1650;
+        }
+        .container {
+            padding: 80px 20px 20px;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .widget {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+            flex: 1 1 calc(33.333% - 40px);
+            box-sizing: border-box;
+            min-width: 280px;
+        }
+        .widget:hover {
+            transform: scale(1.05);
+        }
+        .widget a {
+            text-decoration: none;
+            color: inherit;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 5px;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #ff00aa;
+        }
+        .social-media {
+            margin: 10px 0;
+        }
+        .social-media a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        .social-media a:hover {
+            color: #ffce0a;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo" >SK Infrastructure</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section class="widget">
+            <button class="collapsible">Revenue</button>
+            <div class="content">
+                <p>a major part of the SK Group focused on civil engineering and construction projects,
+                     we can look into the revenue for that specific entity. . Click to view more.</p>
+                <button onclick="openModal('Widget 1')">More Info</button>
+            </div>
+        </section>
+        <section class="widget">
+            <button class="collapsible">Working site</button>
+            <div class="content">
+                <p>This is the content working site. Click to view more.</p>
+                <button onclick="openModal('Widget 2')">More Info</button>
+            </div>
+        </section>
+        <section class="widget">
+            <button class="collapsible">Business</button>
+            <div class="content">
+                <p>This is the content of business. Click to view more.</p>
+                <button onclick="openModal('Widget 3')">More Info</button>
+            </div>
+        </section>
+       
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SK Infrastructure. All rights reserved.</p>
+        <p>
+            <a href=" ">Privacy Policy</a> | 
+            <a href=" ">Terms of Service</a>
+        </p>
+        <div class="social-media">
+            <a href="https://www.facebook.com" target="_blank" class="fab fa-facebook-f"></a>
+            <a href="https://www.twitter.com" target="_blank" class="fab fa-twitter"></a>
+            <a href="https://www.instagram.com" target="_blank" class="fab fa-instagram"></a>
+            <a href="https://www.linkedin.com" target="_blank" class="fab fa-linkedin-in"></a>
+        </div>
+    </footer>
+
+    <script>
+        
+        var coll = document.getElementsByClassName("collapsible");
+        for (var i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+
+        
+        function openModal(Widget) {
+            document.getElementById("modal-text").innerText = "More information about Sk infra is Revenue Trend SK infra revenue varies yearly due to the large-scale and long-term nature of its projects.Recent years have shown growth driven by international projects and diversification into new markets.Major Projects Local Projects: Significant contributions to South Korea s  infrastructure, including highway expansions, urban development projects, and landmark buildings.International Projects: Expanding footprint in the Middle East, Southeast Asia, and other regions with large-scale construction projects." ;
+            document.getElementById("modal").style.display = "flex";
+            
+        }
+
+        function closeModal(widget) {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            var widgets = document.querySelectorAll('.widget');
+            widgets.forEach(function(widget) {
+                widget.style.transition = 'all 0.3s ease-in-out';
+            });
+        });
+    </script>
+</body>
+</html>
